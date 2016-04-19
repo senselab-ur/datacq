@@ -1,0 +1,4 @@
+arduino-python==0.2
+ino==0.3.6
+pyinotify==0.9.4
+pyserial==2.6
