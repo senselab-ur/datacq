@@ -1,7 +1,5 @@
 #include <ArduinoJson.h>
 
-
-int PIN=A0;
 float val;
 int data = 0;
 
@@ -20,7 +18,7 @@ void loop() {
   // Most of the time, you can rely on the implicit casts.
   // In other case, you can do root.set<long>("time", 1351824120);
   root["sensor"] = "voltage";
-  data = analogRead(PIN);
+  data = analogRead(A0);
   val = data * (50.0/1023.0);
   // Add a nested array.
   //
@@ -28,11 +26,7 @@ void loop() {
   // JsonObject but it's less efficient.
   JsonArray& data = root.createNestedArray("data");
   data.add(val);
-  JsonArray& value = root.createNestedArray("value");
-  value.add(val);
   root.printTo(Serial);
   Serial.println();
-  // This prints:
-  // {"sensor":"gps","time":1351824120,"data":[48.756080,2.302038]
   delay(1000);
 }

@@ -7,22 +7,16 @@ import serial
 import time
 import glob
 import json
+import serial
 
-class ArduinoSerialPort:
-	def __init__(self):
-		pass 
-
-	def get_serial(self):
-		ports = glob.glob('/dev/tty[A-Za-z]*')
-		res = []
-		for port in ports:
-			try:
-				s = serial.Serial(port)
-				s.close()
-				res.append(p
-			except:
-				pass
-		return res[0] 
+class JSON:
+	def __init__(self, data):
+		self.data = data 
+	def normalizer(self):
+		try:
+			data = json.loads(self.data)
+		except Exception as err:
+			raise(err)
 
 class DataFetcher:
 

@@ -1,5 +1,5 @@
-import MySQLdb 
-import time 
+import MySQLdb
+import time
 
 query = """INSERT INTO data(`id`, `data`, `date`) VALUES (NULL, {}, NULL"""
 
@@ -8,10 +8,10 @@ class dbsetup:
 	@basic setup for database connection
 	"""
 	def __init__(self, hostname, username, password, db):
-		self.hostname = hostname 
-		self.username = username 
-		self.password = password 
-		self.db = db 
+		self.hostname = hostname
+		self.username = username
+		self.password = password
+		self.db = db
 
 	def connect(self):
 		"""
@@ -23,11 +23,5 @@ class dbsetup:
 			raise(err)
 		return db
 
-def main():
-	
-
-if __name__ == '__main__':
-	main()
-	
 
 
