@@ -12,6 +12,7 @@ def main():
 		print json.loads(ard.readline())
 	except:
 		pass 
+	return json.loads(ard.readline())
 
 if __name__ == '__main__':
 	main()

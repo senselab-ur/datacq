@@ -12,6 +12,7 @@ void loop() {
   StaticJsonBuffer<200> jsonBuffer;
   JsonObject& root = jsonBuffer.createObject();
   root["sensor"] = "voltage";
+
   
   data = analogRead(A0);
   data2 = analogRead(A1);
@@ -21,8 +22,9 @@ void loop() {
 
   JsonArray& data = root.createNestedArray("data1");
   data.add(val);
-  data.add(val2);
-
+  JsonArray& datadummy = root.createNestedArray("data2")
+  datadummy.add(val2);
+  
   root.printTo(Serial);
 
   Serial.println();
