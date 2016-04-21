@@ -13,6 +13,7 @@ import glob
 import json
 import serial
 import csv
+import config
 from time import strftime
 
 try:
@@ -56,13 +57,9 @@ class DataFetcher:
 
 try:
 	"""@database object"""
-<<<<<<< HEAD
-	db = database.dbsetup('localhost','root','anakamak','pi_data')
+	db_info = config.conf
+	db = database.dbsetup(db_info['hostname'], db_info['username']. db_info['password'], db_info['db'])
 
-=======
-	db = database.dbsetup(host,username, password, databasename)
-	
->>>>>>> 41c0772cb3cb10a268b5a91f74ebb33e2934ade0
 	"""@database operation"""
 	db_obj = db.connect()
 
@@ -108,6 +105,7 @@ def main():
 	finally:
 		csvfile.close()
 	print "[{}] done saving data.".format(strftime("%Y-%m-%d %H-%M-%S"))
+
 	"""@execute INSERT command to MySQL database"""
 	try:
 		cur.execute(query.format(data1, data2))
