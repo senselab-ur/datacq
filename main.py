@@ -56,8 +56,13 @@ class DataFetcher:
 
 try:
 	"""@database object"""
+<<<<<<< HEAD
 	db = database.dbsetup('localhost','root','anakamak','pi_data')
 
+=======
+	db = database.dbsetup(host,username, password, databasename)
+	
+>>>>>>> 41c0772cb3cb10a268b5a91f74ebb33e2934ade0
 	"""@database operation"""
 	db_obj = db.connect()
 
