@@ -1,7 +1,6 @@
 #!/usr/bin/python
 """
 data acquistion module for ur-senselab project
-
 @author: @vickydasta
 @license: BSD
 @senselab-ur
@@ -16,6 +15,13 @@ import csv
 import config
 from time import strftime
 
+"""@initialize"""
+
+jsondata = None
+ard = None
+data = None
+idle = 30 # set idle time here
+
 try:
 	import portdetect
 	import database
@@ -28,10 +34,10 @@ class JSON:
 		self.data = data
 	def normalizer(self):
 		try:
-			data = json.loads(self.data)
+			jsondata = json.loads(self.data)
 		except Exception as err:
 			pass
-		return data
+		return jsondata
 
 class DataFetcher:
 
@@ -40,6 +46,8 @@ class DataFetcher:
 		self.port = port
 
 	def GetData(self):
+		"""@bug"""
+
 		try:
 			ard = serial.Serial(self.port, self.BaudRate)
 		except Exception as err:
@@ -48,7 +56,6 @@ class DataFetcher:
 			data = ard.readline()
 		except Exception as err_reading_data:
 			print err_reading_data
-
 		return data
 
 """
@@ -116,9 +123,10 @@ def main():
 		print "[{}] unable to insert data to database: ".format(strftime("%Y-%m-%d %H-%M-%S"), err)
 
 if __name__ == '__main__':
+	print "[{}] intializing main() and idle for {} seconds".format(strftime("%Y-%m-%d %H-%M-%S"),idle)
 	"""wait until the pigs fly"""
 	while True:
 		"""@call main function"""
 		main()
 		"""@sleep for 1 minutes"""
-		time.sleep(60)
+		time.sleep(idle)
