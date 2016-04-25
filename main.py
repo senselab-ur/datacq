@@ -33,6 +33,7 @@ class JSON:
 	def __init__(self, data):
 		self.data = data
 	def normalizer(self):
+		jsondata = None
 		try:
 			jsondata = json.loads(self.data)
 		except Exception as err:
